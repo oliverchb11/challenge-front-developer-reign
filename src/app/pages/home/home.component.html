@@ -1,0 +1,30 @@
+<div class="container-home">
+    <div class="btn-group">
+        <button routerLinkActive="active" routerLink="/">All</button>
+        <button>My faves</button>
+    </div>
+    <div class="content-select">
+        <select name="" id="">
+            <option *ngFor="let new of news" [value]="new.name">{{new.name}}</option>
+        </select>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6" *ngFor="let item of hist ">
+            <div class="content-news " *ngIf="item.story_title">
+                <div class="data-news">
+                    <div class="time">
+                        <img src="/assets/img/iconmonstr-time-2.svg" alt="">
+                        <p>{{item.created_at}} hours ago by {{item.author}}</p>
+                    </div>
+                    <div class="new">
+                        <a target="_blank" [href]="item.story_url">{{item.story_title}}</a>
+                    </div>
+                </div>
+                <div class="icon-heart" (click)="myFavorite(item.parent_id)">
+                    <img *ngIf="item.favorite" src="/assets/img/iconmonstr-favorite-3.svg" alt="">
+                    <img *ngIf="!item.favorite" src="/assets/img/iconmonstr-favorite-2.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
